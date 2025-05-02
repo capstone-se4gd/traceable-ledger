@@ -1,45 +1,21 @@
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
 export function urlHandler(path: string): string {
-    if (process.env.NODE_ENV === "production" && !path.includes(":3000")) {
-        return `${path}:8000`;
-    }
-    return "http://localhost:8000";
+    return `${API_BASE}${path}`;
 }
 
 export function preferencesUrlHandler(): string {
-    if (
-        typeof window !== "undefined" &&
-        window.location.origin !== "http://localhost:3000"
-    ) {
-        const origin = window.location.origin;
-        return `${origin}/preferences-api`;
-    }
-    return "http://localhost:3000/api";
+    return `${API_BASE}/preferences-api`;
 }
 
 export function imagesUrlHandler(): string {
-    if (
-        typeof window !== "undefined" &&
-        window.location.origin !== "http://localhost:3000"
-    ) {
-        const origin = window.location.origin;
-        return `${origin}/product-image-api`;
-    }
-    return "http://localhost:3000/api";
+    return `${API_BASE}/product-image-api`;
 }
 
-export function getProductUrl(id: number | string): string | undefined {
-    if (typeof window !== "undefined") {
-        const origin = window.location.origin;
-        if (
-            process.env.NODE_ENV === "production" &&
-            !origin.includes(":3000")
-        ) {
-            return `${origin}:8000/api/products/${id}`;
-        }
-        return `http://localhost:8000/api/products/${id}`;
-    }
+export function getProductUrl(id: number | string): string {
+    return `${API_BASE}/api/products/${id}`;
 }
 
 export function getSubpartLogUrl(manufacturerUrl: string): string {
-    return manufacturerUrl + ":8000/api/logs/";
+    return `${API_BASE}/api/logs/`;
 }
