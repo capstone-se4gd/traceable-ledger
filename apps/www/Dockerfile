@@ -4,7 +4,7 @@ CMD [ "mkdir", "/app/www/" ]
 
 WORKDIR /app/www
 
-COPY ./apps/www/ .
+COPY . .
 
 ENV NODE_ENV production
 

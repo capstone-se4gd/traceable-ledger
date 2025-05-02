@@ -5,7 +5,7 @@ RUN python3 -m venv /opt/venv/
 CMD ["mkdir", "app/web/"]
 
 WORKDIR /app/web/
-COPY ./apps/web/ .
+COPY . .
 
 RUN  /opt/venv/bin/pip install pip --upgrade && \
     /opt/venv/bin/pip install -r /app/web/requirements.txt && \
