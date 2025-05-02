@@ -1,4 +1,5 @@
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+if (!API_BASE) throw new Error("API base URL is not defined!");
 
 export function urlHandler(path: string): string {
     return `${API_BASE}${path}`;
