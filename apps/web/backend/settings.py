@@ -96,14 +96,24 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "hello_django_dev_azvj",
+#         "USER": "hello_django",
+#         "PASSWORD": "lxavESpaLERxdMmbnic7fxZOjGd6HLLY",
+#         "HOST": "dpg-d0a9ehc9c44c738orqr0-a.frankfurt-postgres.render.com",
+#         "PORT": 5432
+#     }
+# }
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "hello_django_dev",
-        "USER": "hello_django",
-        "PASSWORD": "hello_django",
-        "HOST": "db",
-        "PORT": 5432
+        "NAME": os.environ.get("SQL_DATABASE"),
+        "USER": os.environ.get("SQL_USER"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD"),
+        "HOST": os.environ.get("SQL_HOST"),
+        "PORT": os.environ.get("SQL_PORT", 5432),
     }
 }
 
