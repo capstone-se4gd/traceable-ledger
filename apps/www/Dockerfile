@@ -12,6 +12,10 @@ RUN npm install
 
 RUN npm install autoprefixer@10.0.1
 
+ARG NEXT_PUBLIC_API_BASE_URL
+
+ENV NEXT_PUBLIC_API_BASE_URL="https://traceable-ledger-backend.onrender.com"
+
 RUN npm run build
 
 EXPOSE 3000
