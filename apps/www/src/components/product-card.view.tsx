@@ -61,7 +61,7 @@ export default function ProductCard(props: ProductCardProps) {
     React.useEffect(() => {
         if (typeof window !== "undefined") {
             fetch(
-                `${urlHandler(window.location.origin)}/api/logs/?subpart_id=${props.id}`
+                `${urlHandler("")}/api/logs/?subpart_id=${props.id}`
             )
                 .then((res) => res.json())
                 .then((data) => {

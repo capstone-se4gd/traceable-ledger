@@ -99,7 +99,7 @@ export default function Page({ params }: { params: { productId: string } }) {
     const fetchData = React.useCallback(() => {
         if (typeof window !== "undefined") {
             const origin = window.location.origin;
-            fetch(`${urlHandler(origin)}/api/products/${params.productId}/`)
+            fetch(urlHandler(`/api/products/${params.productId}/`))
                 .then((res) => res.json())
                 .then((data) => {
                     if (data) {
@@ -131,7 +131,7 @@ export default function Page({ params }: { params: { productId: string } }) {
     React.useEffect(() => {
         if (typeof window !== "undefined") {
             fetch(
-                `${urlHandler(window.location.origin)}/api/logs/?subpart_id=${params.productId}`
+                urlHandler(`/api/logs/?subpart_id=${params.productId}`)
             )
                 .then((res) => res.json())
                 .then((data) => {

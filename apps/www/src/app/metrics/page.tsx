@@ -53,7 +53,7 @@ export default function MetricsPage() {
     const fetchData = React.useCallback(() => {
         if (typeof window !== "undefined") {
             const origin = window.location.origin;
-            fetch(`${urlHandler(origin)}/api/sustainability-metrics/`)
+            fetch(urlHandler("/api/sustainability-metrics/"))
                 .then((res) => res.json())
                 .then((data) => {
                     if (data) {
@@ -66,7 +66,7 @@ export default function MetricsPage() {
     const handleAddMetricButtonClick = React.useCallback(() => {
         if (typeof window !== "undefined") {
             const origin = window.location.origin;
-            fetch(`${urlHandler(origin)}/api/sustainability-metrics/`, {
+            fetch(urlHandler("/api/sustainability-metrics/"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -99,7 +99,7 @@ export default function MetricsPage() {
             if (typeof window !== "undefined" && !!metric.metric_id) {
                 const origin = window.location.origin;
                 fetch(
-                    `${urlHandler(origin)}/api/sustainability-metrics/${metric.metric_id}/`,
+                    urlHandler(`/api/sustainability-metrics/${metric.metric_id}/`),
                     {
                         method: "PATCH",
                         headers: { "Content-Type": "application/json" },
@@ -134,7 +134,7 @@ export default function MetricsPage() {
             if (typeof window !== "undefined" && !!metricId) {
                 const origin = window.location.origin;
                 fetch(
-                    `${urlHandler(origin)}/api/sustainability-metrics/${metricId}/`,
+                    urlHandler(`/api/sustainability-metrics/${metricId}/`),
                     {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json" },

@@ -102,12 +102,12 @@ export default function Products() {
     const fetchData = React.useCallback(() => {
         if (typeof window !== "undefined") {
             const origin = window.location.origin;
-            fetch(`${urlHandler(origin)}/api/products/`)
+            fetch(urlHandler("/api/products/"))
                 .then((res) => res.json())
                 .then((data) => {
                     if (Array.isArray(data)) setProducts(data);
                 });
-            fetch(`${urlHandler(origin)}/api/sustainability-metrics/`)
+            fetch(urlHandler("/api/sustainability-metrics/"))
                 .then((res) => res.json())
                 .then((data) => {
                     if (data) {

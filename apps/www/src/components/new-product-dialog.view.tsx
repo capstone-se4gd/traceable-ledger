@@ -64,7 +64,7 @@ export default function NewProductDialog(props: { onCreateProduct(): void }) {
     const handleCreateButtonClick = React.useCallback(() => {
         if (typeof window !== "undefined") {
             const origin = window.location.origin;
-            fetch(`${urlHandler(origin)}/api/products/`, {
+            fetch(urlHandler("/api/products/"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -113,7 +113,7 @@ export default function NewProductDialog(props: { onCreateProduct(): void }) {
                         });
 
                         fetch(
-                            `${urlHandler(origin)}/api/logs/?product_id=${data.slug}&subpart_id=${material.slug}`
+                            urlHandler(`/api/logs/?product_id=${data.slug}&subpart_id=${material.slug}`)
                         )
                             .then((res) => res.json())
                             .then((data) => {
@@ -238,7 +238,7 @@ export default function NewProductDialog(props: { onCreateProduct(): void }) {
     React.useEffect(() => {
         if (typeof window !== "undefined") {
             const origin = window.location.origin;
-            fetch(`${urlHandler(origin)}/api/sustainability-metrics/`)
+            fetch(urlHandler(`/api/sustainability-metrics/`))
                 .then((res) => res.json())
                 .then((data) => {
                     if (data) {
